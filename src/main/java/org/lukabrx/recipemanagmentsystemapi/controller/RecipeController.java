@@ -1,4 +1,4 @@
-package org.lukabrx.recipemanagmentsystemapi;
+package org.lukabrx.recipemanagmentsystemapi.controller;
 
 import org.lukabrx.recipemanagmentsystemapi.dto.RecipeDTO;
 import org.lukabrx.recipemanagmentsystemapi.model.Recipe;
