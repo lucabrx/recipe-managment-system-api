@@ -1,10 +1,12 @@
 package org.lukabrx.recipemanagmentsystemapi.service;
 
 import org.lukabrx.recipemanagmentsystemapi.dto.RecipeDTO;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
+@Service
 public interface IRecipeService {
     long insertRecipe(RecipeDTO recipeDTO);
-    Optional<RecipeDTO> getRecipeById(long id);
+    RecipeDTO getRecipeById(long id);
+    void deleteRecipeById(long id);
 }
