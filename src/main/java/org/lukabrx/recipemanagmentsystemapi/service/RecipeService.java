@@ -3,7 +3,7 @@ package org.lukabrx.recipemanagmentsystemapi.service;
 import org.lukabrx.recipemanagmentsystemapi.Utils;
 import org.lukabrx.recipemanagmentsystemapi.dto.RecipeDTO;
 import org.lukabrx.recipemanagmentsystemapi.model.Recipe;
-import org.lukabrx.recipemanagmentsystemapi.repository.RecipeRepository;
+import org.lukabrx.recipemanagmentsystemapi.repository.IRecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,9 +12,9 @@ import java.util.Optional;
 @Service
 public class RecipeService implements IRecipeService {
 
-    private final RecipeRepository recipeRepository;
+    private final IRecipeRepository recipeRepository;
 
-    public RecipeService(RecipeRepository recipeRepository) {
+    public RecipeService(IRecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
