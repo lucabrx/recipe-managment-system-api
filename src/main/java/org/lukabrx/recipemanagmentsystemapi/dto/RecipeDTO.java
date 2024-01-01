@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -19,6 +20,11 @@ public class RecipeDTO {
     @NotBlank
     private String description;
 
+    @NotBlank
+    private String category;
+
+    private LocalDateTime date;
+
     @NotNull
     @Size(min = 1)
     private List<String> ingredients;
@@ -27,11 +33,12 @@ public class RecipeDTO {
     @Size(min = 1)
     private List<String> directions;
 
-    public RecipeDTO(String name, String description, List<String> ingredients, List<String> directions) {
+    public RecipeDTO(String name, String description, List<String> ingredients, List<String> directions,  String category, LocalDateTime date) {
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
         this.directions = directions;
+        this.category = category;
+        this.date =  date;
     }
 }
-

@@ -9,7 +9,9 @@ public class Utils {
                 recipe.getName(),
                 recipe.getDescription(),
                 recipe.getIngredients(),
-                recipe.getDirections()
+                recipe.getDirections(),
+                recipe.getCategory(),
+                recipe.getDate()
         );
     }
 }

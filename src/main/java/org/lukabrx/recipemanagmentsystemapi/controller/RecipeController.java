@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,4 +48,29 @@ public class RecipeController {
         recipeService.deleteRecipeById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> putRecipe(@PathVariable long id, @RequestBody @Valid RecipeDTO recipeDTO) {
+        if (recipeService.getRecipeById(id) == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        recipeService.updateRecipeById(id, recipeDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/api/recipe/search")
+    public ResponseEntity<?> searchRecipe(@RequestParam(required = false) String category,
+                                          @RequestParam(required = false) String name) {
+        if (category != null && name == null) {
+            List<RecipeDTO> recipeRequestList = recipeService.searchRecipesByCategory(category);
+            return new ResponseEntity<>(recipeRequestList, HttpStatus.OK);
+        } else if (name != null && category == null) {
+            List<RecipeDTO> recipeRequestList = recipeService.searchRecipesByName(name);
+            return new ResponseEntity<>(recipeRequestList, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
+

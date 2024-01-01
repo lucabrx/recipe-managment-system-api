@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,11 @@ public class Recipe {
     @Column
     private String name;
     @Column
+    private String category;
+    @Column
     private String description;
+    @Column
+    private LocalDateTime date;
 
     @ElementCollection
     private List<String> ingredients = new ArrayList<>();
@@ -28,11 +33,13 @@ public class Recipe {
     private List<String> directions = new ArrayList<>();
 
 
-    public Recipe(String name, String description, List<String> ingredients, List<String> directions) {
+    public Recipe(String name, String description, List<String> ingredients, List<String> directions, String category) {
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
         this.directions = directions;
+        this.category = category;
+        this.date = LocalDateTime.now();
     }
 }
 
